@@ -4,7 +4,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Mail, Lock } from "lucide-react";
 import { SIGN_IN_FORM_FIELDS } from "@/constants/constants";
-import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 
 const signInSchema = z.object({
@@ -20,12 +19,9 @@ export default function SignIn() {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm<SignInFormData>({
     resolver: zodResolver(signInSchema),
   });
-  const { error, login } = useAuth();
-
   const onSubmit = async (data: SignInFormData) => {
     try {
       console.log("Form submitted with data:", data);
@@ -35,9 +31,9 @@ export default function SignIn() {
       //   router.push("/");
       // }
       // router.push("/")
-      console.error("error:", error);
-    } catch (err) {
-      console.error("Submission error:", err, error);
+      // console.error("error:", error);
+    } catch (err: unknown) {
+      console.error("Submission error:", err);
     }
   };
 

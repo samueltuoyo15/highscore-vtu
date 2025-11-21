@@ -1,5 +1,4 @@
 "use client";
-import axios from "axios";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, Controller } from "react-hook-form";
@@ -50,6 +49,7 @@ export default function SignUp() {
       //     headers: { "Content-Type": "application/json" },
       //   },
       // );
+      console.log(data);
       router.push("/");
       reset({ fullName: "", username: "", email: "", password: "", phone: "" });
     } catch (error) {
