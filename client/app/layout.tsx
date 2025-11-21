@@ -14,8 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SwiftBills",
-  description: "A high-performance VTU (Virtual Top-Up) web application built with Next Js, Golang backend, and Monnify API integration. This platform enables users to buy airtime/data, pay bills e.t.c",
+  title: "High Score Vtu",
+  description:
+    "An high-performance VTU (Virtual Top-Up) web application built with Next Js, Golang backend, and Paystack API integration. This platform enables users to buy airtime/data, pay bills e.t.c",
 };
 
 export default function RootLayout({
@@ -25,13 +26,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} select-none`}>
-        <AuthProvider>
-          {children}
-        </AuthProvider>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} select-none`}
+      >
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );
 }
-
-
