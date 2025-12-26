@@ -14,7 +14,6 @@ const transactions = [
 export default function HistoryPage() {
     return (
         <div className="min-h-screen bg-gray-50 pb-20">
-            {/* Header */}
             <div className="bg-white p-4 sticky top-0 z-10 shadow-sm border-b">
                 <div className="flex items-center gap-4 max-w-2xl mx-auto">
                     <Link href="/" className="p-2 hover:bg-gray-100 rounded-full transition-colors">

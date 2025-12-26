@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { AuthProvider } from "@/context/AuthContext";
+import Navigation from "@/components/navigation";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -27,9 +28,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} select-none`}
+        className={`${geistSans.variable} ${geistMono.variable} select-none bg-background text-foreground`}
       >
-        <AuthProvider>{children}</AuthProvider>
+        <AuthProvider>
+          <div className="flex min-h-screen">
+            <Navigation />
+            <main className="flex-1 pb-20 md:pb-0 md:pl-64 w-full">
+              {children}
+            </main>
+          </div>
+        </AuthProvider>
       </body>
     </html>
   );
