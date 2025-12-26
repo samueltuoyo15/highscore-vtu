@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ArrowLeft, Phone, CreditCard } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+
 
 const providers = [
     { id: "mtn", name: "MTN", color: "bg-yellow-400", text: "text-yellow-900" },
@@ -15,7 +15,7 @@ const providers = [
 const quickAmounts = [100, 200, 500, 1000, 2000, 5000];
 
 export default function AirtimePage() {
-    const router = useRouter();
+
     const [selectedProvider, setSelectedProvider] = useState(providers[0]);
     const [phoneNumber, setPhoneNumber] = useState("");
     const [amount, setAmount] = useState("");
@@ -53,8 +53,8 @@ export default function AirtimePage() {
                                 key={p.id}
                                 onClick={() => setSelectedProvider(p)}
                                 className={`flex flex-col items-center justify-center p-3 rounded-xl transition-all duration-300 ${selectedProvider.id === p.id
-                                        ? "ring-2 ring-blue-500 ring-offset-2 scale-105 shadow-md"
-                                        : "opacity-60 hover:opacity-100 hover:bg-gray-100"
+                                    ? "ring-2 ring-blue-500 ring-offset-2 scale-105 shadow-md"
+                                    : "opacity-60 hover:opacity-100 hover:bg-gray-100"
                                     } bg-white border border-gray-100`}
                             >
                                 <div className={`w-10 h-10 rounded-full ${p.color} ${p.text} flex items-center justify-center font-bold mb-1 shadow-sm`}>
@@ -114,8 +114,8 @@ export default function AirtimePage() {
                     disabled={!amount || !phoneNumber || loading}
                     onClick={handlePurchase}
                     className={`w-full py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all shadow-lg ${!amount || !phoneNumber || loading
-                            ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                            : "bg-blue-600 text-white hover:bg-blue-700 hover:shadow-blue-500/25 active:scale-[0.98]"
+                        ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                        : "bg-blue-600 text-white hover:bg-blue-700 hover:shadow-blue-500/25 active:scale-[0.98]"
                         }`}
                 >
                     {loading ? (

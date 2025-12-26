@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ArrowLeft, Tv, CreditCard, CheckCircle } from "lucide-react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+
 
 const providers = [
     { id: "dstv", name: "DSTV", color: "bg-blue-500", text: "text-white" },
@@ -36,10 +36,16 @@ const packages = {
     ],
 };
 
+interface Package {
+    id: number;
+    name: string;
+    price: number;
+}
+
 export default function CablePage() {
     const [selectedProvider, setSelectedProvider] = useState(providers[0]);
     const [smartcardNumber, setSmartcardNumber] = useState("");
-    const [selectedPackage, setSelectedPackage] = useState<any>(null);
+    const [selectedPackage, setSelectedPackage] = useState<Package | null>(null);
     const [loading, setLoading] = useState(false);
     const [verifying, setVerifying] = useState(false);
     const [verifiedName, setVerifiedName] = useState("");
@@ -91,8 +97,8 @@ export default function CablePage() {
                                     setVerifiedName("");
                                 }}
                                 className={`flex flex-col items-center justify-center p-4 rounded-xl transition-all duration-300 ${selectedProvider.id === p.id
-                                        ? "ring-2 ring-purple-500 ring-offset-2 scale-105 shadow-md"
-                                        : "opacity-60 hover:opacity-100 hover:bg-gray-100"
+                                    ? "ring-2 ring-purple-500 ring-offset-2 scale-105 shadow-md"
+                                    : "opacity-60 hover:opacity-100 hover:bg-gray-100"
                                     } bg-white border border-gray-100`}
                             >
                                 <div className={`w-12 h-12 rounded-full ${p.color} ${p.text} flex items-center justify-center font-bold mb-2 shadow-sm`}>
@@ -145,8 +151,8 @@ export default function CablePage() {
                                 key={pkg.id}
                                 onClick={() => setSelectedPackage(pkg)}
                                 className={`w-full flex justify-between items-center p-4 rounded-xl border transition-all duration-200 ${selectedPackage?.id === pkg.id
-                                        ? "border-purple-600 bg-purple-50 ring-1 ring-purple-600"
-                                        : "border-gray-100 bg-white hover:border-purple-200"
+                                    ? "border-purple-600 bg-purple-50 ring-1 ring-purple-600"
+                                    : "border-gray-100 bg-white hover:border-purple-200"
                                     }`}
                             >
                                 <span className="font-bold text-gray-800">{pkg.name}</span>
@@ -164,8 +170,8 @@ export default function CablePage() {
                     disabled={!selectedPackage || !smartcardNumber || loading}
                     onClick={handlePurchase}
                     className={`w-full py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-all shadow-lg ${!selectedPackage || !smartcardNumber || loading
-                            ? "bg-gray-300 text-gray-500 cursor-not-allowed"
-                            : "bg-purple-900 text-white hover:bg-purple-800 hover:shadow-purple-900/25 active:scale-[0.98]"
+                        ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                        : "bg-purple-900 text-white hover:bg-purple-800 hover:shadow-purple-900/25 active:scale-[0.98]"
                         }`}
                 >
                     {loading ? (
