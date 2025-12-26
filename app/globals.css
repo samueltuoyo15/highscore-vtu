@@ -6,24 +6,20 @@
   --primary: #0f172a;
   --primary-foreground: #ffffff;
   --secondary: #f1f5f9;
-  --secondary: #f1f5f9;
   --secondary-foreground: #0f172a;
   --background: #ffffff;
   --foreground: #0f172a;
-  --muted: #f8fafc;
   --muted: #f8fafc;
   --muted-foreground: #64748b;
   --card: #ffffff;
   --card-foreground: #0f172a;
   --border: #e2e8f0;
-  --border: #e2e8f0;
   --accent: #3b82f6;
-
 }
 
 @layer base {
   body {
-    @apply bg-muted/50 text-foreground antialiased;
+    @apply bg-muted text-foreground antialiased;
   }
 }
 
